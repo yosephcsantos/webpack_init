@@ -6,10 +6,12 @@
 // notify.log("----------------- Webpack works FINE!!");
 // notify.alertMsg("Webpack works FINE!!");
 
-class Person {
-	constructor() {
-			console.log("HEY, I'm works");
-	}
-}
+// class Person {
+// 	constructor() {
+// 			console.log("HEY, I'm works! It's webpack!");
+// 	}
+// }
+// 
+// new Person();
 
-new Person();
+require('./main.scss');
