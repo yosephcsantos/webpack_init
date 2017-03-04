@@ -7,7 +7,8 @@
   "scripts": {
     "build": "webpack",
     "watch": "yarn run build -- --watch",
-    "dev": "webpack-dev-server src/main.js"
+    "dev": "webpack-dev-server src/main.js",
+		"prod": "NODE_ENV=production webpack"
   },
   "dependencies": {
     "babel-core": "^6.23.1",
