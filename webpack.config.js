@@ -1,13 +1,19 @@
 var webpack = require('webpack');
 var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var inProduction = (process.env.NODE_ENV === 'production');
 
 module.exports = {
-	entry: './src/main.js',
+	entry: {
+		app: [ 
+			'./src/main.js',
+			'./src/main.scss'
+		]
+	},
 	
 	output: {
 		path: path.resolve(__dirname, './dist'),
-		filename: 'bundle.js'
+		filename: '[name].js'
 	},
 	
 	module: {
@@ -29,12 +35,15 @@ module.exports = {
 	},
 	
 	plugins: [
-		new ExtractTextPlugin('style.css')
+		new ExtractTextPlugin('[name].css')		
 	]
 };
 
-if ( process.env.NODE_ENV === 'production' ) {
+if ( inProduction ) {
 	module.exports.plugins.push(
-		new webpack.optimize.UglifyJsPlugin()
+		new webpack.optimize.UglifyJsPlugin(),
+		new webpack.LoaderOptionsPlugin({
+		  minimize: true
+		})
 	);
 }
